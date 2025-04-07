@@ -4,6 +4,7 @@
 #include <vector>
 #define PHNT_VERSION PHNT_WIN11
 #include "phnt.h"
+#include "json.hpp"
 #pragma comment(lib, "ntdll.lib")
 
 void DumpKUSD() {
@@ -151,6 +152,22 @@ void DumpWindowsAPI() {
     printf("\n> GetUserNameW\n%ls\n\n", userName);
 }
 
+void SaveToJson() {
+    std::ostringstream json;
+    JSON::StartObject(json);
+
+    CollectKUSD(json);
+    CollectPEB(json);
+    CollectCPUID(json);
+    CollectXGETBV(json);
+    CollectSystemInfo(json);
+    CollectWindowsInfo(json);
+
+    JSON::EndObject(json);
+
+    JSON::SaveToFile("windump.json", json);
+}
+
 int main() {
     DumpKUSD();
     DumpPEB();
@@ -158,6 +175,7 @@ int main() {
     DumpXGETBV();
     DumpSystemInfo();
     DumpWindowsAPI();
+    SaveToJson();
 
     system("pause");
 
