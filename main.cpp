@@ -44,7 +44,7 @@ void DumpPEB() {
     pPeb = (PPEB)__readfsdword(0x30);
 #endif
 
-    printf("\nPEB", pPeb);
+    printf("\nPEB");
     printf("\n---\n");
     printf("            OSMajorVersion: %lu\n", pPeb->OSMajorVersion);
     printf("            OSMinorVersion: %lu\n", pPeb->OSMinorVersion);
