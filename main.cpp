@@ -9,8 +9,8 @@
 
 void DumpKUSD() {
     PKUSER_SHARED_DATA pKUSD = (PKUSER_SHARED_DATA)0x7ffe0000;
-    printf("\nKUSER_SHARED_DATA @ 0x7FFE0000");
-    printf("\n------------------------------\n");
+    printf("\nKUSER_SHARED_DATA");
+    printf("\n-----------------\n");
     printf("        NtBuildNumber: %u (0x%X)\n", pKUSD->NtBuildNumber, pKUSD->NtBuildNumber);
     // https://learn.microsoft.com/en-us/windows/win32/msi/msintproducttype
     printf("        NtProductType: %s\n",
