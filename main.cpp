@@ -152,7 +152,7 @@ void DumpWindowsAPI() {
     printf("\n> GetUserNameW\n%ls\n\n", userName);
 }
 
-void SaveToJson() {
+void SaveToJson(std::string filename = "windump.json") {
     std::ostringstream json;
     JSON::StartObject(json);
 
@@ -165,7 +165,7 @@ void SaveToJson() {
 
     JSON::EndObject(json);
 
-    JSON::SaveToFile("windump.json", json);
+    JSON::SaveToFile(filename, json);
 }
 
 int main() {
