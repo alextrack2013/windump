@@ -32,7 +32,7 @@ void DumpKUSD() {
         "CX8", "APIC", "SEP", "MTRR", "PGE", "MCA", "CMOV"
     };
     for (int i = 0; i < sizeof(featureNames) / sizeof(featureNames[0]); i++) {
-        printf("%-6s: %s\n", featureNames[i],
+        printf("%-4s: %s\n", featureNames[i],
             pKUSD->ProcessorFeatures[i] ? "Yes" : "No");
     }
 }
