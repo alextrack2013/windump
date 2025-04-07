@@ -8,6 +8,8 @@
 #pragma comment(lib, "ntdll.lib")
 #include "json.hpp"
 
+int indent = 0;
+
 std::string JSON::EscapeString(const std::string& input) {
     std::ostringstream ss;
     for (char c : input) {
@@ -42,44 +44,58 @@ std::string JSON::WideToJsonString(const wchar_t* wideStr) {
     return EscapeString(narrowStr.data());
 }
 
+void JSON::AddIndent(std::ostringstream& json) {
+    json << "\n" << std::string(indent * 2, ' ');
+}
+
 void JSON::StartObject(std::ostringstream& json, const std::string& key) {
+    AddIndent(json);
     if (!key.empty()) {
-        json << "\"" << key << "\":";
+        json << "\"" << key << "\": ";
     }
     json << "{";
+    indent++;
 }
 
 void JSON::EndObject(std::ostringstream& json) {
+    indent--;
+    AddIndent(json);
     json << "}";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, const std::string& value, bool last) {
-    json << "\"" << key << "\":\"" << value << "\"";
+    AddIndent(json);
+    json << "\"" << key << "\": \"" << value << "\"";
     if (!last) json << ",";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, int value, bool last) {
-    json << "\"" << key << "\":" << value;
+    AddIndent(json);
+    json << "\"" << key << "\": " << value;
     if (!last) json << ",";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, long long value, bool last) {
-    json << "\"" << key << "\":" << value;
+    AddIndent(json);
+    json << "\"" << key << "\": " << value;
     if (!last) json << ",";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, unsigned long value, bool last) {
-    json << "\"" << key << "\":" << value;
+    AddIndent(json);
+    json << "\"" << key << "\": " << value;
     if (!last) json << ",";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, bool value, bool last) {
-    json << "\"" << key << "\":" << (value ? "true" : "false");
+    AddIndent(json);
+    json << "\"" << key << "\": " << (value ? "true" : "false");
     if (!last) json << ",";
 }
 
 void JSON::AddKeyValue(std::ostringstream& json, const std::string& key, float value, bool last) {
-    json << "\"" << key << "\":" << value;
+    AddIndent(json);
+    json << "\"" << key << "\": " << value;
     if (!last) json << ",";
 }
 

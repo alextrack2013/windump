@@ -5,6 +5,7 @@
 namespace JSON {
     std::string EscapeString(const std::string& input);
     std::string WideToJsonString(const wchar_t* wideStr);
+    void AddIndent(std::ostringstream& json);
     void StartObject(std::ostringstream& json, const std::string& key = "");
     void EndObject(std::ostringstream& json);
 
