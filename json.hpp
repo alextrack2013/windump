@@ -12,7 +12,7 @@ namespace JSON {
     void AddKeyValue(std::ostringstream& json, const std::string& key, const std::string& value, bool last = false);
     void AddKeyValue(std::ostringstream& json, const std::string& key, int value, bool last = false);
     void AddKeyValue(std::ostringstream& json, const std::string& key, unsigned long value, bool last = false);
-    void AddKeyValue(std::ostringstream& json, const std::string& key, __int64 value, bool last = false);
+    void AddKeyValue(std::ostringstream& json, const std::string& key, long long value, bool last = false);
     void AddKeyValue(std::ostringstream& json, const std::string& key, float value, bool last = false);
     void AddKeyValue(std::ostringstream& json, const std::string& key, bool value, bool last = false);
 
