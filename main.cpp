@@ -57,7 +57,7 @@ void DumpCPUID() {
     char brand[49] = { 0 };
 
     printf("\nCPUID");
-    printf("\n-----\n");
+    printf("\n-----");
 
     __cpuid(regs, 1);
     printf("\n> Feature Flags\n");
